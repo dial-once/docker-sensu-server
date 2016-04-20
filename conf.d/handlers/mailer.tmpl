@@ -1,0 +1,15 @@
+{
+    "handlers": {
+        "mailer-mailgun": {
+          "type": "pipe",
+          "command": "handler-mailer-mailgun.rb",
+          "severities": ["warning", "critical", "unknown"]
+        }
+      },
+      "mailer-mailgun": {
+        "mail_from": "{{ .Env.MAILGUN_FROM }}",
+        "mail_to": "{{ .Env.MAILGUN_TO }}",
+        "mg_apikey": "{{ .Env.MAILGUN_APIKEY }}",
+        "mg_domain": "{{ .Env.MAILGUN_DOMAIN }}"
+      }
+  }
