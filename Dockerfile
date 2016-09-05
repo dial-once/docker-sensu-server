@@ -8,7 +8,9 @@ RUN gem install \
   sensu-plugins-mailer \
   # Install sensu plugins from sources
   && mkdir -p /etc/sensu/extensions \
-  && wget -O - https://github.com/opower/sensu-metrics-relay/archive/master.tar.gz | tar xzf - --strip 4 -C /etc/sensu/extensions
+  && apk add --no-cache tar ca-certificates wget \
+  && wget -O - https://github.com/opower/sensu-metrics-relay/archive/master.tar.gz | tar xzf - --strip 4 -C /etc/sensu/extensions \
+  && apk del tar ca-certificates wget
 
 COPY conf.d /etc/sensu/conf.d
 
